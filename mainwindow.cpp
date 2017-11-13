@@ -15,14 +15,34 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    lineEditkeyboard = new Keyboard();
     this->setStyleSheet("background-color:white;");
     //serial = new QSerialPort(this);
+
+    // connect fuction for on-screen keyboard
+    connect(ui->lineEdit_host_ip ,SIGNAL(selectionChanged()),this,SLOT(run_keyboard_lineEdit()));
+    connect(ui->lineEdit_host_user,SIGNAL(selectionChanged()),this,SLOT(run_keyboard_lineEdit()));
 
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::run_keyboard_lineEdit()
+{
+    QLineEdit *line = (QLineEdit *)sender();
+    lineEditkeyboard->setLineEdit(line);
+
+    int ph = this->geometry().height();
+    int pw = this->geometry().width();
+    int px = this->geometry().x();
+    int py = this->geometry().y();
+    int dw = lineEditkeyboard->geometry().width();
+    int dh = lineEditkeyboard->geometry().height();
+    lineEditkeyboard->setGeometry(px+(pw-dw)/2, py+ph-dh, dw, dh );
+    lineEditkeyboard->show();
 }
 
 void MainWindow::on_pushButton_Quit_clicked()
@@ -44,6 +64,7 @@ void MainWindow::on_pushButton_uart_connect_clicked()
 {
     ui->statusBar->showMessage("chưa có gì để connect cả");
 }
+
 
 void MainWindow::on_pushButton_write_start_clicked()
 {
