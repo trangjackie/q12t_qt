@@ -89,4 +89,5 @@ QString MainWindow::file_read(QString filename)
 void MainWindow::file_upload_to_host(QString host_ip_path)
 {
     // upload data to server
+    // try to using git
 }
