@@ -31,7 +31,7 @@ private:
     Ui::MainWindow *ui;
     QString get_time_string();
     QString file_read(QString filename);
-    void file_upload_to_host(QString host_ip_path);
+    void file_upload_to_host(QString filename,QString user,QString host_ip_path);
 };
 
 #endif // MAINWINDOW_H

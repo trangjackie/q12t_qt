@@ -42,14 +42,14 @@ void MainWindow::on_pushButton_uart_getport_clicked()
 
 void MainWindow::on_pushButton_uart_connect_clicked()
 {
-    ui->label_status->setText("chưa có gì để connect cả");
+    ui->statusBar->showMessage("chưa có gì để connect cả");
 }
 
 void MainWindow::on_pushButton_write_start_clicked()
 {
     QString filename = "Write_"+get_time_string()+".txt";
     QString file_content;
-    ui->label_status->setText(filename);
+
     QFile file( filename );
     if ( file.open(QIODevice::ReadWrite) )
     {
@@ -61,6 +61,9 @@ void MainWindow::on_pushButton_write_start_clicked()
     // read back for verifing the file content
     file_content = file_read(filename);
     ui->plainTextEdit_textbox->document()->setPlainText(file_content);
+
+    // upload file to server
+    file_upload_to_host(filename,ui->lineEdit_host_user->text(),ui->lineEdit_host_ip->text());
 }
 
 QString MainWindow::get_time_string()
@@ -86,8 +89,11 @@ QString MainWindow::file_read(QString filename)
     return file_content;
 }
 
-void MainWindow::file_upload_to_host(QString host_ip_path)
+void MainWindow::file_upload_to_host(QString filename,QString user,QString host_ip_path)
 {
+    QString command = "scp "+filename+" "+user+"@"+host_ip_path+":~/";
     // upload data to server
-    // try to
+
+    ui->statusBar->showMessage(command);
+
 }
