@@ -15,13 +15,16 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    lineEditkeyboard = new Keyboard();
-    this->setStyleSheet("background-color:white;");
+    lineEditkeyboard = new KeyboardQwerty();
+    this->setStyleSheet("background-color: rgba(215, 214,213, 100);");
     //serial = new QSerialPort(this);
 
     // connect fuction for on-screen keyboard
     connect(ui->lineEdit_host_ip ,SIGNAL(selectionChanged()),this,SLOT(run_keyboard_lineEdit()));
     connect(ui->lineEdit_host_user,SIGNAL(selectionChanged()),this,SLOT(run_keyboard_lineEdit()));
+    connect(ui->lineEdit_host_passwd,SIGNAL(selectionChanged()),this,SLOT(run_keyboard_lineEdit()));
+    // Currently, onscreen keyboard only support line edit
+    //connect(ui->plainTextEdit_textbox,SIGNAL(selectionChanged()),this,SLOT(run_keyboard_lineEdit()));
 
 }
 

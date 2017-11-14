@@ -14,17 +14,25 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    keyboard/keyboard.cpp
+    keyboard/keyboard.cpp \
+    keyboardqwerty/keyboardqwerty.cpp
 
 HEADERS  += mainwindow.h \
     keyboard/keyboard.h \
-    keyboard/ui_keyboard.h
+    keyboard/ui_keyboard.h \
+    keyboardqwerty/keyboardqwerty.h
 
 FORMS    += mainwindow.ui \
-    keyboard/keyboard.ui
+    keyboard/keyboard.ui \
+    keyboardqwerty/keyboardqwerty.ui
 
 # for rpi lcd with user pi
 target.path=/home/pi/qtapp
 INSTALLS+=target
+
+DISTFILES +=
+
+RESOURCES += \
+    icons/icons.qrc
 
 

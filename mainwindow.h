@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "keyboard/keyboard.h"
+#include "keyboardqwerty/keyboardqwerty.h"
 
 #include <QMainWindow>
 #include <QString>
@@ -26,7 +26,7 @@ private slots:
     void run_keyboard_lineEdit();
 private:
     Ui::MainWindow *ui;
-    Keyboard *lineEditkeyboard;
+    KeyboardQwerty *lineEditkeyboard;
     QString get_time_string();
     QString file_read(QString filename);
     void file_upload_to_host(QString filename,QString user,QString host_ip_path);

@@ -1,50 +1,11 @@
-/*
- * Author: LT Thomas <ltjr@ti.com>
- *
- * Copyright (C) 2011 Texas Instruments Incorporated - http://www.ti.com/
- *
- *
- *  Redistribution and use in source and binary forms, with or without
- *  modification, are permitted provided that the following conditions
- *  are met:
- *
- *    Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- *
- *    Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the
- *    distribution.
- *
- *    Neither the name of Texas Instruments Incorporated nor the names of
- *    its contributors may be used to endorse or promote products derived
- *    from this software without specific prior written permission.
- *
- *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- *  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- *  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
- *  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- *  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- *  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- *  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- *  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- *  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- *  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
-*/
+#include "keyboardqwerty.h"
+#include "ui_keyboardqwerty.h"
 
-
-#include "keyboard.h"
-#include "ui_keyboard.h"
-#include <QtGui>
-
-Keyboard::Keyboard(QWidget *parent) :
+KeyboardQwerty::KeyboardQwerty(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Keyboard)
+    ui(new Ui::KeyboardQwerty)
 {
     ui->setupUi(this);
-
     this->setStyleSheet("background-color: rgba(0, 0,0, 70);"
                         "color: rgb(255, 255, 255);"
                         "font: bold 24px FreeSans;"
@@ -66,6 +27,9 @@ Keyboard::Keyboard(QWidget *parent) :
     connect ( ui->Buttoni, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
     connect ( ui->Buttono, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
     connect ( ui->Buttonp, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
+    connect ( ui->Buttonbracketleft, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
+    connect ( ui->Buttonbracketright, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
+    connect ( ui->Buttonbackslash, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
 
 
     connect ( ui->Buttona, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
@@ -77,6 +41,8 @@ Keyboard::Keyboard(QWidget *parent) :
     connect ( ui->Buttonj, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
     connect ( ui->Buttonk, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
     connect ( ui->Buttonl, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
+    connect ( ui->Buttonsemicolon, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
+    connect ( ui->Buttonprime, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
 
     connect ( ui->Buttonz, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
     connect ( ui->Buttonx, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
@@ -85,6 +51,9 @@ Keyboard::Keyboard(QWidget *parent) :
     connect ( ui->Buttonb, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
     connect ( ui->Buttonn, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
     connect ( ui->Buttonm, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
+    connect ( ui->Buttoncomma, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
+    connect ( ui->Buttondot, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
+    connect ( ui->Buttonstroke, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
 
     connect ( ui->Button0, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
     connect ( ui->Button1, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
@@ -96,6 +65,8 @@ Keyboard::Keyboard(QWidget *parent) :
     connect ( ui->Button7, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
     connect ( ui->Button8, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
     connect ( ui->Button9, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
+    connect ( ui->Buttonminor, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
+    connect ( ui->Buttonequal, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
 
     connect ( ui->space, SIGNAL( clicked() ), this, SLOT( keyboardHandler() ) );
 
@@ -105,7 +76,13 @@ Keyboard::Keyboard(QWidget *parent) :
 
 }
 
-void Keyboard::keyboardHandler()
+KeyboardQwerty::~KeyboardQwerty()
+{
+    delete ui;
+}
+
+
+void KeyboardQwerty::keyboardHandler()
 {
     QPushButton *button = (QPushButton *)sender();
     //qDebug() << "pressed " << button->text();
@@ -122,7 +99,7 @@ void Keyboard::keyboardHandler()
     }
     else if(inputText == "\\")
     {
-        outputText += ui->Buttona->text() ;
+        outputText += ui->Buttonbackslash->text() ;
     }
     else
     {
@@ -134,49 +111,32 @@ void Keyboard::keyboardHandler()
 
 }
 
-void Keyboard::setLineEdit(QLineEdit * line)
+void KeyboardQwerty::setLineEdit(QLineEdit * line)
 {
     outputLineEdit = line;
 }
 
-Keyboard::~Keyboard()
-{
-    delete ui;
-}
 
-
-void Keyboard::on_shift_clicked()
+void KeyboardQwerty::on_shift_clicked()
 {
     if (shift==false){
         shift = true;
         ui->shift->setStyleSheet("background-color: rgba(0, 0,0, 100);"
                                  "color: rgb(20, 170, 255);");
-        Keyboard::set_char_button(1);
+        KeyboardQwerty::set_char_button(1);
     }
     else {
         shift = false;
         ui->shift->setStyleSheet("background-color: rgba(0, 0,0, 70);"
                                  "color: rgb(255, 255, 255);");
-        Keyboard::set_char_button(0);
+        KeyboardQwerty::set_char_button(0);
     }
 
 }
 
 
-void Keyboard::on_char_2_toggled(bool checked)
-{
-    if(checked)
-    {
-        Keyboard::set_char_button(2);
 
-    }
-    else
-    {
-        Keyboard::set_char_button(0);
-    }
-}
-
-void Keyboard::on_clear_clicked()
+void KeyboardQwerty::on_clear_clicked()
 {
     outputText="";
     ui->lineEdit->setText(outputText);
@@ -184,7 +144,7 @@ void Keyboard::on_clear_clicked()
 
 
 
-void Keyboard::on_enterButton_clicked()
+void KeyboardQwerty::on_enterButton_clicked()
 {
     //qDebug() << "enter";
     outputLineEdit->setText(outputText);
@@ -193,14 +153,14 @@ void Keyboard::on_enterButton_clicked()
     close();
 }
 
-void Keyboard::on_lineEdit_textChanged(const QString &arg1)
+void KeyboardQwerty::on_lineEdit_textChanged(const QString &arg1)
 {
     outputText = arg1;
     ui->lineEdit->setText(outputText);
 
 }
 
-void Keyboard::on_lineEdit_returnPressed()
+void KeyboardQwerty::on_lineEdit_returnPressed()
 {
     //qDebug() << "enter";
     outputLineEdit->setText(outputText);
@@ -209,58 +169,15 @@ void Keyboard::on_lineEdit_returnPressed()
     close();
 }
 
-void Keyboard::on_backButton_clicked()
+void KeyboardQwerty::on_backButton_clicked()
 {
     outputText.remove(outputText.length()-1,outputText.length());
     ui->lineEdit->setText(outputText);
 }
 
-void Keyboard::set_char_button(int char_type)
+void KeyboardQwerty::set_char_button(int char_type)
 {
-    if(char_type == 2)
-    {
-        ui->Button0->setText("`");
-        ui->Button1->setText("~");
-        ui->Button2->setText("!");
-        ui->Button3->setText("@");
-        ui->Button4->setText("#");
-        ui->Button5->setText("$");
-        ui->Button6->setText("%");
-        ui->Button7->setText("^");
-        ui->Button8->setText("&&");// trUtf8("\u0040")
-        ui->Button9->setText("*");
-
-        ui->Buttonq->setText("(");
-        ui->Buttonw->setText(")");
-        ui->Buttone->setText("-");
-        ui->Buttonr->setText("_");
-        ui->Buttont->setText("=");
-        ui->Buttony->setText("+");
-        ui->Buttonu->setText("[");
-        ui->Buttoni->setText("]");
-        ui->Buttono->setText("{");
-        ui->Buttonp->setText("}");
-
-        ui->Buttona->setText(trUtf8("\\"));
-        ui->Buttons->setText("|");
-        ui->Buttond->setText(";");
-        ui->Buttonf->setText(":");
-        ui->Buttong->setText("'");
-        ui->Buttonh->setText("\"");
-        ui->Buttonj->setText("/");
-        ui->Buttonk->setText("?");
-        ui->Buttonl->setText("");
-
-        ui->Buttonz->setText("<");
-        ui->Buttonx->setText(">");
-        ui->Buttonc->setText(",");
-        ui->Buttonv->setText(".");
-        ui->Buttonb->setText("");
-        ui->Buttonn->setText("");
-        ui->Buttonm->setText("");
-
-    }
-    else if (char_type==0)
+    if (char_type==0)
     {
         ui->Button0->setText("0");
         ui->Button1->setText("1");
@@ -272,6 +189,9 @@ void Keyboard::set_char_button(int char_type)
         ui->Button7->setText("7");
         ui->Button8->setText("8");
         ui->Button9->setText("9");
+        ui->Buttonminor->setText("-");
+        ui->Buttonequal->setText("=");
+
 
         ui->Buttonq->setText("q");
         ui->Buttonw->setText("w");
@@ -283,6 +203,9 @@ void Keyboard::set_char_button(int char_type)
         ui->Buttoni->setText("i");
         ui->Buttono->setText("o");
         ui->Buttonp->setText("p");
+        ui->Buttonbracketleft->setText("[");
+        ui->Buttonbracketright->setText("]");
+        ui->Buttonbackslash->setText(trUtf8("\\"));
 
         ui->Buttona->setText("a");
         ui->Buttons->setText("s");
@@ -293,6 +216,8 @@ void Keyboard::set_char_button(int char_type)
         ui->Buttonj->setText("j");
         ui->Buttonk->setText("k");
         ui->Buttonl->setText("l");
+        ui->Buttonsemicolon->setText(";");
+        ui->Buttonprime->setText("'");
 
         ui->Buttonz->setText("z");
         ui->Buttonx->setText("x");
@@ -301,6 +226,9 @@ void Keyboard::set_char_button(int char_type)
         ui->Buttonb->setText("b");
         ui->Buttonn->setText("n");
         ui->Buttonm->setText("m");
+        ui->Buttoncomma->setText(",");
+        ui->Buttondot->setText(".");
+        ui->Buttonstroke->setText("/");
     }
     else if (char_type==1)
     {
@@ -311,9 +239,11 @@ void Keyboard::set_char_button(int char_type)
         ui->Button4->setText("$");
         ui->Button5->setText("%");
         ui->Button6->setText("^");
-        ui->Button7->setText("&");
+        ui->Button7->setText("&&");
         ui->Button8->setText("*");
         ui->Button9->setText("(");
+        ui->Buttonminor->setText("_");
+        ui->Buttonequal->setText("+");
 
         ui->Buttonq->setText("Q");
         ui->Buttonw->setText("W");
@@ -325,6 +255,9 @@ void Keyboard::set_char_button(int char_type)
         ui->Buttoni->setText("I");
         ui->Buttono->setText("O");
         ui->Buttonp->setText("P");
+        ui->Buttonbracketleft->setText("{");
+        ui->Buttonbracketright->setText("}");
+        ui->Buttonbackslash->setText(trUtf8("|"));
 
         ui->Buttona->setText("A");
         ui->Buttons->setText("S");
@@ -335,6 +268,8 @@ void Keyboard::set_char_button(int char_type)
         ui->Buttonj->setText("J");
         ui->Buttonk->setText("K");
         ui->Buttonl->setText("L");
+        ui->Buttonsemicolon->setText(":");
+        ui->Buttonprime->setText("\"");
 
         ui->Buttonz->setText("Z");
         ui->Buttonx->setText("X");
@@ -343,5 +278,8 @@ void Keyboard::set_char_button(int char_type)
         ui->Buttonb->setText("B");
         ui->Buttonn->setText("N");
         ui->Buttonm->setText("M");
+        ui->Buttoncomma->setText("<");
+        ui->Buttondot->setText(">");
+        ui->Buttonstroke->setText("?");
     }
 }
