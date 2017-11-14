@@ -1,18 +1,20 @@
 <RCC>
     <qresource prefix="/new/prefix1">
-        <file>gnome/16x16/emblems/emblem-web.png</file>
-        <file>16/back.svg</file>
-        <file>16/cancel.svg</file>
-        <file>16/exit.svg</file>
-        <file>16/forward.svg</file>
-        <file>16/gtk-home.svg</file>
-        <file>16/browser-download.svg</file>
-        <file>16/document-properties.svg</file>
-        <file>16/editclear.svg</file>
-        <file>16/package-downgrade.svg</file>
-        <file>16/package-upgrade.svg</file>
-        <file>16/reload.svg</file>
         <file>gtk-connect.png</file>
         <file>gtk-disconnect.png</file>
+        <file>document-properties.svg</file>
+        <file>document-save.svg</file>
+        <file>edit-clear.svg</file>
+        <file>emblem-web.png</file>
+        <file>go-home.svg</file>
+        <file>go-next.svg</file>
+        <file>go-previous.svg</file>
+        <file>package-downgrade.svg</file>
+        <file>package-upgrade.svg</file>
+        <file>start-here.svg</file>
+        <file>system-shutdown.svg</file>
+        <file>view-refresh.svg</file>
+        <file>window-close.svg</file>
+        <file>edit-clear2.svg</file>
     </qresource>
 </RCC>

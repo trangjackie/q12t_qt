@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>600</width>
-    <height>240</height>
+    <height>248</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -40,6 +40,12 @@ background-color: rgb(255, 255, 255);</string>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="font">
         <font>
          <family>FreeSans</family>
@@ -49,7 +55,17 @@ background-color: rgb(255, 255, 255);</string>
         </font>
        </property>
        <property name="text">
-        <string>Clear</string>
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="../icons/icons.qrc">
+         <normaloff>:/new/prefix1/edit-clear2.svg</normaloff>:/new/prefix1/edit-clear2.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -235,7 +251,7 @@ background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="icon">
         <iconset resource="../icons/icons.qrc">
-         <normaloff>:/new/prefix1/16/editclear.svg</normaloff>:/new/prefix1/16/editclear.svg</iconset>
+         <normaloff>:/new/prefix1/edit-clear.svg</normaloff>:/new/prefix1/edit-clear.svg</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -399,7 +415,7 @@ background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="icon">
         <iconset resource="../icons/icons.qrc">
-         <normaloff>:/new/prefix1/16/forward.svg</normaloff>:/new/prefix1/16/forward.svg</iconset>
+         <normaloff>:/new/prefix1/go-next.svg</normaloff>:/new/prefix1/go-next.svg</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -601,7 +617,7 @@ background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="icon">
         <iconset resource="../icons/icons.qrc">
-         <normaloff>:/new/prefix1/16/back.svg</normaloff>:/new/prefix1/16/back.svg</iconset>
+         <normaloff>:/new/prefix1/go-previous.svg</normaloff>:/new/prefix1/go-previous.svg</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -809,12 +825,12 @@ background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="icon">
         <iconset resource="../icons/icons.qrc">
-         <normaloff>:/new/prefix1/gnome/16x16/emblems/emblem-web.png</normaloff>:/new/prefix1/gnome/16x16/emblems/emblem-web.png</iconset>
+         <normaloff>:/new/prefix1/emblem-web.png</normaloff>:/new/prefix1/emblem-web.png</iconset>
        </property>
        <property name="iconSize">
         <size>
-         <width>24</width>
-         <height>24</height>
+         <width>32</width>
+         <height>32</height>
         </size>
        </property>
       </widget>
@@ -1305,7 +1321,7 @@ background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="icon">
         <iconset resource="../icons/icons.qrc">
-         <normaloff>:/new/prefix1/16/document-properties.svg</normaloff>:/new/prefix1/16/document-properties.svg</iconset>
+         <normaloff>:/new/prefix1/document-properties.svg</normaloff>:/new/prefix1/document-properties.svg</iconset>
        </property>
        <property name="iconSize">
         <size>

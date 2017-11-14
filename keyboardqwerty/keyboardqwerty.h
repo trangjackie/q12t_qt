@@ -30,12 +30,15 @@ private slots:
     void on_backButton_clicked();
 
 
+    void on_ButtonLanguage_clicked();
+
 private:
     Ui::KeyboardQwerty *ui;
-    void set_char_button(int char_type);
+    void set_char_button(int language, bool shift);
     QString outputText;
     QLineEdit *outputLineEdit;
     bool shift;
+    int language;
 };
 
 #endif // KEYBOARDQWERTY_H

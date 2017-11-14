@@ -72,6 +72,7 @@ KeyboardQwerty::KeyboardQwerty(QWidget *parent) :
 
     outputText = "";
     shift = false;
+    language = 0;
     ui->lineEdit->setFocus();
 
 }
@@ -123,15 +124,14 @@ void KeyboardQwerty::on_shift_clicked()
         shift = true;
         ui->shift->setStyleSheet("background-color: rgba(0, 0,0, 100);"
                                  "color: rgb(20, 170, 255);");
-        KeyboardQwerty::set_char_button(1);
+
     }
     else {
         shift = false;
         ui->shift->setStyleSheet("background-color: rgba(0, 0,0, 70);"
                                  "color: rgb(255, 255, 255);");
-        KeyboardQwerty::set_char_button(0);
     }
-
+    KeyboardQwerty::set_char_button(language,shift);
 }
 
 
@@ -175,9 +175,10 @@ void KeyboardQwerty::on_backButton_clicked()
     ui->lineEdit->setText(outputText);
 }
 
-void KeyboardQwerty::set_char_button(int char_type)
+void KeyboardQwerty::set_char_button(int language, bool shift)
 {
-    if (char_type==0)
+    // number and special chars
+    if (!shift)
     {
         ui->Button0->setText("0");
         ui->Button1->setText("1");
@@ -192,46 +193,18 @@ void KeyboardQwerty::set_char_button(int char_type)
         ui->Buttonminor->setText("-");
         ui->Buttonequal->setText("=");
 
-
-        ui->Buttonq->setText("q");
-        ui->Buttonw->setText("w");
-        ui->Buttone->setText("e");
-        ui->Buttonr->setText("r");
-        ui->Buttont->setText("t");
-        ui->Buttony->setText("y");
-        ui->Buttonu->setText("u");
-        ui->Buttoni->setText("i");
-        ui->Buttono->setText("o");
-        ui->Buttonp->setText("p");
         ui->Buttonbracketleft->setText("[");
         ui->Buttonbracketright->setText("]");
         ui->Buttonbackslash->setText(trUtf8("\\"));
 
-        ui->Buttona->setText("a");
-        ui->Buttons->setText("s");
-        ui->Buttond->setText("d");
-        ui->Buttonf->setText("f");
-        ui->Buttong->setText("g");
-        ui->Buttonh->setText("h");
-        ui->Buttonj->setText("j");
-        ui->Buttonk->setText("k");
-        ui->Buttonl->setText("l");
         ui->Buttonsemicolon->setText(";");
         ui->Buttonprime->setText("'");
 
-        ui->Buttonz->setText("z");
-        ui->Buttonx->setText("x");
-        ui->Buttonc->setText("c");
-        ui->Buttonv->setText("v");
-        ui->Buttonb->setText("b");
-        ui->Buttonn->setText("n");
-        ui->Buttonm->setText("m");
         ui->Buttoncomma->setText(",");
         ui->Buttondot->setText(".");
         ui->Buttonstroke->setText("/");
     }
-    else if (char_type==1)
-    {
+    else{
         ui->Button0->setText(")");
         ui->Button1->setText("!");
         ui->Button2->setText("@");
@@ -245,41 +218,164 @@ void KeyboardQwerty::set_char_button(int char_type)
         ui->Buttonminor->setText("_");
         ui->Buttonequal->setText("+");
 
-        ui->Buttonq->setText("Q");
-        ui->Buttonw->setText("W");
-        ui->Buttone->setText("E");
-        ui->Buttonr->setText("R");
-        ui->Buttont->setText("T");
-        ui->Buttony->setText("Y");
-        ui->Buttonu->setText("U");
-        ui->Buttoni->setText("I");
-        ui->Buttono->setText("O");
-        ui->Buttonp->setText("P");
         ui->Buttonbracketleft->setText("{");
         ui->Buttonbracketright->setText("}");
         ui->Buttonbackslash->setText(trUtf8("|"));
 
-        ui->Buttona->setText("A");
-        ui->Buttons->setText("S");
-        ui->Buttond->setText("D");
-        ui->Buttonf->setText("F");
-        ui->Buttong->setText("G");
-        ui->Buttonh->setText("H");
-        ui->Buttonj->setText("J");
-        ui->Buttonk->setText("K");
-        ui->Buttonl->setText("L");
         ui->Buttonsemicolon->setText(":");
         ui->Buttonprime->setText("\"");
 
-        ui->Buttonz->setText("Z");
-        ui->Buttonx->setText("X");
-        ui->Buttonc->setText("C");
-        ui->Buttonv->setText("V");
-        ui->Buttonb->setText("B");
-        ui->Buttonn->setText("N");
-        ui->Buttonm->setText("M");
         ui->Buttoncomma->setText("<");
         ui->Buttondot->setText(">");
         ui->Buttonstroke->setText("?");
     }
+
+    // alphabet chars
+    if (language==0)
+    {
+        if (!shift)
+        {
+            ui->Buttonq->setText("q");
+            ui->Buttonw->setText("w");
+            ui->Buttone->setText("e");
+            ui->Buttonr->setText("r");
+            ui->Buttont->setText("t");
+            ui->Buttony->setText("y");
+            ui->Buttonu->setText("u");
+            ui->Buttoni->setText("i");
+            ui->Buttono->setText("o");
+            ui->Buttonp->setText("p");
+
+            ui->Buttona->setText("a");
+            ui->Buttons->setText("s");
+            ui->Buttond->setText("d");
+            ui->Buttonf->setText("f");
+            ui->Buttong->setText("g");
+            ui->Buttonh->setText("h");
+            ui->Buttonj->setText("j");
+            ui->Buttonk->setText("k");
+            ui->Buttonl->setText("l");
+
+            ui->Buttonz->setText("z");
+            ui->Buttonx->setText("x");
+            ui->Buttonc->setText("c");
+            ui->Buttonv->setText("v");
+            ui->Buttonb->setText("b");
+            ui->Buttonn->setText("n");
+            ui->Buttonm->setText("m");
+        }
+        else
+        {
+            ui->Buttonq->setText("Q");
+            ui->Buttonw->setText("W");
+            ui->Buttone->setText("E");
+            ui->Buttonr->setText("R");
+            ui->Buttont->setText("T");
+            ui->Buttony->setText("Y");
+            ui->Buttonu->setText("U");
+            ui->Buttoni->setText("I");
+            ui->Buttono->setText("O");
+            ui->Buttonp->setText("P");
+
+
+            ui->Buttona->setText("A");
+            ui->Buttons->setText("S");
+            ui->Buttond->setText("D");
+            ui->Buttonf->setText("F");
+            ui->Buttong->setText("G");
+            ui->Buttonh->setText("H");
+            ui->Buttonj->setText("J");
+            ui->Buttonk->setText("K");
+            ui->Buttonl->setText("L");
+
+
+            ui->Buttonz->setText("Z");
+            ui->Buttonx->setText("X");
+            ui->Buttonc->setText("C");
+            ui->Buttonv->setText("V");
+            ui->Buttonb->setText("B");
+            ui->Buttonn->setText("N");
+            ui->Buttonm->setText("M");
+        }
+    }
+    else if (language==1)
+    {
+        if (!shift)
+        {
+            ui->Buttonq->setText("ㅂ");
+            ui->Buttonw->setText("ㅈ");
+            ui->Buttone->setText("ㄷ");
+            ui->Buttonr->setText("ㄱ");
+            ui->Buttont->setText("ㅅ");
+            ui->Buttony->setText("ㅛ");
+            ui->Buttonu->setText("ㅕ");
+            ui->Buttoni->setText("ㅑ");
+            ui->Buttono->setText("ㅐ");
+            ui->Buttonp->setText("ㅔ");
+
+            ui->Buttona->setText("ㅁ");
+            ui->Buttons->setText("ㄴ");
+            ui->Buttond->setText("ㅇ");
+            ui->Buttonf->setText("ㄹ");
+            ui->Buttong->setText("ㅎ");
+            ui->Buttonh->setText("ㅗ");
+            ui->Buttonj->setText("ㅓ");
+            ui->Buttonk->setText("ㅏ");
+            ui->Buttonl->setText("ㅣ");
+
+            ui->Buttonz->setText("ㅋ");
+            ui->Buttonx->setText("ㅌ");
+            ui->Buttonc->setText("ㅊ");
+            ui->Buttonv->setText("ㅍ");
+            ui->Buttonb->setText("ㅠ");
+            ui->Buttonn->setText("ㅜ");
+            ui->Buttonm->setText("ㅡ");
+        }
+        else
+        {
+            ui->Buttonq->setText("ㅃ");
+            ui->Buttonw->setText("ㅉ");
+            ui->Buttone->setText("ㄸ");
+            ui->Buttonr->setText("ㄲ");
+            ui->Buttont->setText("ㅆ");
+            ui->Buttony->setText("ㅛ");
+            ui->Buttonu->setText("ㅕ");
+            ui->Buttoni->setText("ㅑ");
+            ui->Buttono->setText("ㅒ");
+            ui->Buttonp->setText("ㅖ");
+
+
+            ui->Buttona->setText("ㅁ");
+            ui->Buttons->setText("ㄴ");
+            ui->Buttond->setText("ㅇ");
+            ui->Buttonf->setText("ㄹ");
+            ui->Buttong->setText("ㅎ");
+            ui->Buttonh->setText("ㅗ");
+            ui->Buttonj->setText("ㅓ");
+            ui->Buttonk->setText("ㅏ");
+            ui->Buttonl->setText("ㅣ");
+
+
+            ui->Buttonz->setText("ㅋ");
+            ui->Buttonx->setText("ㅌ");
+            ui->Buttonc->setText("ㅊ");
+            ui->Buttonv->setText("ㅍ");
+            ui->Buttonb->setText("ㅠ");
+            ui->Buttonn->setText("ㅜ");
+            ui->Buttonm->setText("ㅡ");
+        }
+    }
+}
+
+void KeyboardQwerty::on_ButtonLanguage_clicked()
+{
+    if (language<1)
+    {
+        language += 1;
+    }
+    else
+    {
+        language = 0;
+    }
+    KeyboardQwerty::set_char_button(language,shift);
 }

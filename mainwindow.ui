@@ -43,7 +43,7 @@
     </property>
     <property name="icon">
      <iconset resource="icons/icons.qrc">
-      <normaloff>:/new/prefix1/16/reload.svg</normaloff>:/new/prefix1/16/reload.svg</iconset>
+      <normaloff>:/new/prefix1/view-refresh.svg</normaloff>:/new/prefix1/view-refresh.svg</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -78,7 +78,7 @@
     </property>
     <property name="icon">
      <iconset resource="icons/icons.qrc">
-      <normaloff>:/new/prefix1/16/exit.svg</normaloff>:/new/prefix1/16/exit.svg</iconset>
+      <normaloff>:/new/prefix1/system-shutdown.svg</normaloff>:/new/prefix1/system-shutdown.svg</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -123,7 +123,7 @@
    <widget class="QPushButton" name="pushButton_write_start">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>110</x>
       <y>80</y>
       <width>40</width>
       <height>40</height>
@@ -134,7 +134,7 @@
     </property>
     <property name="icon">
      <iconset resource="icons/icons.qrc">
-      <normaloff>:/new/prefix1/16/package-upgrade.svg</normaloff>:/new/prefix1/16/package-upgrade.svg</iconset>
+      <normaloff>:/new/prefix1/package-upgrade.svg</normaloff>:/new/prefix1/package-upgrade.svg</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -230,7 +230,7 @@
      <rect>
       <x>10</x>
       <y>80</y>
-      <width>80</width>
+      <width>90</width>
       <height>40</height>
      </rect>
     </property>
