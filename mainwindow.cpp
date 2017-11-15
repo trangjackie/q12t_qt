@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     lineEditkeyboard = new KeyboardQwerty();
     this->setStyleSheet("background-color: rgba(215, 214,213, 100);");
-    //serial = new QSerialPort(this);
+    serial = new QSerialPort(this);
 
     // connect fuction for on-screen keyboard
     connect(ui->lineEdit_host_ip ,SIGNAL(selectionChanged()),this,SLOT(run_keyboard_lineEdit()));
@@ -46,11 +46,6 @@ void MainWindow::run_keyboard_lineEdit()
     int dh = lineEditkeyboard->geometry().height();
     lineEditkeyboard->setGeometry(px+(pw-dw)/2, py+ph-dh, dw, dh );
     lineEditkeyboard->show();
-}
-
-void MainWindow::on_pushButton_Quit_clicked()
-{
-    QApplication::quit();
 }
 
 
@@ -120,4 +115,34 @@ void MainWindow::file_upload_to_host(QString filename,QString user,QString host_
 
     ui->statusBar->showMessage(command);
 
+}
+
+// Functions for UART
+void MainWindow::openSerialPort()
+{
+    serial->setPortName(p.name);
+    serial->setBaudRate(p.baudRate);
+    serial->setDataBits(p.dataBits);
+    serial->setParity(p.parity);
+    serial->setStopBits(p.stopBits);
+    serial->setFlowControl(p.flowControl);
+    if (serial->open(QIODevice::ReadWrite)) {
+        console->setEnabled(true);
+        console->setLocalEchoEnabled(p.localEchoEnabled);
+        ui->actionConnect->setEnabled(false);
+        ui->actionDisconnect->setEnabled(true);
+        ui->actionConfigure->setEnabled(false);
+        showStatusMessage(tr("Connected to %1 : %2, %3, %4, %5, %6")
+                          .arg(p.name).arg(p.stringBaudRate).arg(p.stringDataBits)
+                          .arg(p.stringParity).arg(p.stringStopBits).arg(p.stringFlowControl));
+    } else {
+        QMessageBox::critical(this, tr("Error"), serial->errorString());
+
+        showStatusMessage(tr("Open error"));
+    }
+}
+
+void MainWindow::on_actionExit_triggered()
+{
+    QApplication::quit();
 }

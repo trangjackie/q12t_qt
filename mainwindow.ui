@@ -33,7 +33,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
+      <y>50</y>
       <width>40</width>
       <height>40</height>
      </rect>
@@ -52,46 +52,11 @@
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_Quit">
-    <property name="geometry">
-     <rect>
-      <x>750</x>
-      <y>404</y>
-      <width>40</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>20</width>
-      <height>20</height>
-     </size>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset resource="icons/icons.qrc">
-      <normaloff>:/new/prefix1/system-shutdown.svg</normaloff>:/new/prefix1/system-shutdown.svg</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>32</width>
-      <height>32</height>
-     </size>
-    </property>
-   </widget>
    <widget class="QComboBox" name="comboBox_uartport">
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>10</y>
+      <y>40</y>
       <width>150</width>
       <height>40</height>
      </rect>
@@ -100,8 +65,8 @@
    <widget class="QPushButton" name="pushButton_uart_connect">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>10</y>
+      <x>240</x>
+      <y>40</y>
       <width>40</width>
       <height>40</height>
      </rect>
@@ -124,7 +89,7 @@
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>80</y>
+      <y>130</y>
       <width>40</width>
       <height>40</height>
      </rect>
@@ -229,7 +194,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>80</y>
+      <y>140</y>
       <width>90</width>
       <height>40</height>
      </rect>
@@ -240,17 +205,61 @@
    </widget>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>400</width>
+     <height>40</height>
+    </size>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
-    <bool>false</bool>
+    <bool>true</bool>
    </attribute>
+   <addaction name="separator"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionExit">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/new/prefix1/system-shutdown.svg</normaloff>:/new/prefix1/system-shutdown.svg</iconset>
+   </property>
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionUartConnect">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/new/prefix1/gtk-connect.png</normaloff>:/new/prefix1/gtk-connect.png</iconset>
+   </property>
+   <property name="text">
+    <string>UartConnect</string>
+   </property>
+   <property name="toolTip">
+    <string>click to connect UART port</string>
+   </property>
+  </action>
+  <action name="actionUartConfig">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/new/prefix1/document-properties.svg</normaloff>:/new/prefix1/document-properties.svg</iconset>
+   </property>
+   <property name="text">
+    <string>UartConfig</string>
+   </property>
+   <property name="toolTip">
+    <string>Config UART port</string>
    </property>
   </action>
  </widget>
