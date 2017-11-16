@@ -16,5 +16,7 @@
         <file>view-refresh.svg</file>
         <file>window-close.svg</file>
         <file>edit-clear2.svg</file>
+        <file>media-playback-start.png</file>
+        <file>media-seek-forward.png</file>
     </qresource>
 </RCC>

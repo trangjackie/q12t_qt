@@ -29,85 +29,6 @@
    <enum>QTabWidget::Triangular</enum>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="pushButton_uart_getport">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>50</y>
-      <width>40</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset resource="icons/icons.qrc">
-      <normaloff>:/new/prefix1/view-refresh.svg</normaloff>:/new/prefix1/view-refresh.svg</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>24</width>
-      <height>24</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboBox_uartport">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>40</y>
-      <width>150</width>
-      <height>40</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_uart_connect">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>40</y>
-      <width>40</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset resource="icons/icons.qrc">
-      <normaloff>:/new/prefix1/gtk-connect.png</normaloff>:/new/prefix1/gtk-connect.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>24</width>
-      <height>24</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_write_start">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>130</y>
-      <width>40</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset resource="icons/icons.qrc">
-      <normaloff>:/new/prefix1/package-upgrade.svg</normaloff>:/new/prefix1/package-upgrade.svg</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>24</width>
-      <height>24</height>
-     </size>
-    </property>
-   </widget>
    <widget class="QPlainTextEdit" name="plainTextEdit_textbox">
     <property name="geometry">
      <rect>
@@ -190,18 +111,457 @@
      <string>Passwd</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>140</y>
+      <y>20</y>
       <width>90</width>
       <height>40</height>
      </rect>
     </property>
     <property name="text">
-     <string>Write data</string>
+     <string>Command</string>
     </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_UartCommand">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>20</y>
+      <width>80</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>FreeSans</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_UartSendCommand">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>20</y>
+      <width>40</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>click to send out command to serial port</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="icons/icons.qrc">
+      <normaloff>:/new/prefix1/media-playback-start.png</normaloff>:/new/prefix1/media-playback-start.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>24</width>
+      <height>24</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>411</width>
+      <height>301</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="2" column="0">
+      <widget class="QPushButton" name="pushButton_DUT_SRAM_Write">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="icons/icons.qrc">
+         <normaloff>:/new/prefix1/package-upgrade.svg</normaloff>:/new/prefix1/package-upgrade.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0" colspan="4">
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="2">
+        <widget class="QRadioButton" name="radioButton_5">
+         <property name="text">
+          <string>C1</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons/icons.qrc">
+           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QRadioButton" name="radioButton_7">
+         <property name="text">
+          <string>C1</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons/icons.qrc">
+           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QRadioButton" name="radioButton_2">
+         <property name="text">
+          <string>C1</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons/icons.qrc">
+           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QRadioButton" name="radioButton_3">
+         <property name="text">
+          <string>C1</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons/icons.qrc">
+           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QRadioButton" name="radioButton_12">
+         <property name="text">
+          <string>C1</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons/icons.qrc">
+           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QRadioButton" name="radioButton_8">
+         <property name="text">
+          <string>C1</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons/icons.qrc">
+           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QRadioButton" name="radioButton_4">
+         <property name="text">
+          <string>C1</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons/icons.qrc">
+           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QRadioButton" name="radioButton">
+         <property name="text">
+          <string>C1</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons/icons.qrc">
+           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QRadioButton" name="radioButton_6">
+         <property name="text">
+          <string>C1</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons/icons.qrc">
+           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QRadioButton" name="radioButton_9">
+         <property name="text">
+          <string>C1</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons/icons.qrc">
+           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QRadioButton" name="radioButton_11">
+         <property name="text">
+          <string>C1</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons/icons.qrc">
+           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QRadioButton" name="radioButton_10">
+         <property name="text">
+          <string>C1</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons/icons.qrc">
+           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QRadioButton" name="radioButton_13">
+         <property name="text">
+          <string>C1</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons/icons.qrc">
+           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QRadioButton" name="radioButton_14">
+         <property name="text">
+          <string>C1</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons/icons.qrc">
+           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QRadioButton" name="radioButton_15">
+         <property name="text">
+          <string>C1</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons/icons.qrc">
+           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="2" column="2">
+      <widget class="QPushButton" name="pushButton_DUT_SRAM_Write_3">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="icons/icons.qrc">
+         <normaloff>:/new/prefix1/package-upgrade.svg</normaloff>:/new/prefix1/package-upgrade.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QPushButton" name="pushButton_DUT_SRAM_Write_2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="icons/icons.qrc">
+         <normaloff>:/new/prefix1/package-upgrade.svg</normaloff>:/new/prefix1/package-upgrade.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="3">
+      <widget class="QLabel" name="label_7">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Write data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="3">
+      <widget class="QLabel" name="label_4">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Write data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="QPushButton" name="pushButton_DUT_SRAM_Write_4">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="icons/icons.qrc">
+         <normaloff>:/new/prefix1/package-upgrade.svg</normaloff>:/new/prefix1/package-upgrade.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLabel" name="label_6">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Write data</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLabel" name="label_8">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Write data</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
@@ -214,7 +574,7 @@
    <property name="minimumSize">
     <size>
      <width>400</width>
-     <height>40</height>
+     <height>60</height>
     </size>
    </property>
    <property name="sizeIncrement">
@@ -238,6 +598,7 @@
    <addaction name="separator"/>
    <addaction name="actionUartConfig"/>
    <addaction name="actionUartConnect"/>
+   <addaction name="actionQuickTest"/>
    <addaction name="actionExit"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -254,9 +615,13 @@
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset resource="icons/icons.qrc">
-     <normaloff>:/new/prefix1/gtk-disconnect.png</normaloff>:/new/prefix1/gtk-disconnect.png</iconset>
+     <normaloff>:/new/prefix1/gtk-disconnect.png</normaloff>
+     <normalon>:/new/prefix1/gtk-disconnect.png</normalon>:/new/prefix1/gtk-disconnect.png</iconset>
    </property>
    <property name="text">
     <string>UartConnect</string>
@@ -275,6 +640,18 @@
    </property>
    <property name="toolTip">
     <string>Config UART port</string>
+   </property>
+  </action>
+  <action name="actionQuickTest">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/new/prefix1/media-seek-forward.png</normaloff>:/new/prefix1/media-seek-forward.png</iconset>
+   </property>
+   <property name="text">
+    <string>quickTest</string>
+   </property>
+   <property name="toolTip">
+    <string>Send a test char to serial port</string>
    </property>
   </action>
  </widget>

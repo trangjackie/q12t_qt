@@ -10,6 +10,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QMessageBox>
+#include <QTextCodec>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -18,14 +19,22 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     lineEditkeyboard = new KeyboardQwerty();
     this->setStyleSheet("background-color: rgba(215, 214,213, 100);");
-    //serial = new QSerialPort(this);
+    ui->mainToolBar->setIconSize(QSize(40,40));
+    // UART
+    serial = new QSerialPort(this);
+    settings = new SettingsDialog;
+    connect(serial, SIGNAL(error(QSerialPort::SerialPortError)), this,
+            SLOT(handleError(QSerialPort::SerialPortError)));
+    connect(serial, SIGNAL(readyRead()), this, SLOT(uart_readData()));
 
     // connect fuction for on-screen keyboard
     connect(ui->lineEdit_host_ip ,SIGNAL(selectionChanged()),this,SLOT(run_keyboard_lineEdit()));
     connect(ui->lineEdit_host_user,SIGNAL(selectionChanged()),this,SLOT(run_keyboard_lineEdit()));
     connect(ui->lineEdit_host_passwd,SIGNAL(selectionChanged()),this,SLOT(run_keyboard_lineEdit()));
+    connect(ui->lineEdit_UartCommand,SIGNAL(selectionChanged()),this,SLOT(run_keyboard_lineEdit()));
     // Currently, onscreen keyboard only support line edit
     //connect(ui->plainTextEdit_textbox,SIGNAL(selectionChanged()),this,SLOT(run_keyboard_lineEdit()));
+
 
 }
 
@@ -47,21 +56,6 @@ void MainWindow::run_keyboard_lineEdit()
     int dh = lineEditkeyboard->geometry().height();
     lineEditkeyboard->setGeometry(px+(pw-dw)/2, py+ph-dh, dw, dh );
     lineEditkeyboard->show();
-}
-
-
-void MainWindow::on_pushButton_uart_getport_clicked()
-{
-    ui->comboBox_uartport->clear();
-    foreach (const QSerialPortInfo &serialPortInfo, QSerialPortInfo::availablePorts())
-        {
-        ui->comboBox_uartport->addItem(serialPortInfo.portName());
-        }
-}
-
-void MainWindow::on_pushButton_uart_connect_clicked()
-{
-    ui->statusBar->showMessage("chưa có gì để connect cả");
 }
 
 
@@ -118,35 +112,19 @@ void MainWindow::file_upload_to_host(QString filename,QString user,QString host_
 
 }
 
-// Functions for UART
-//void MainWindow::openSerialPort()
-//{
-//    serial->setPortName(p.name);
-//    serial->setBaudRate(p.baudRate);
-//    serial->setDataBits(p.dataBits);
-//    serial->setParity(p.parity);
-//    serial->setStopBits(p.stopBits);
-//    serial->setFlowControl(p.flowControl);
-//    if (serial->open(QIODevice::ReadWrite)) {
-//        console->setEnabled(true);
-//        console->setLocalEchoEnabled(p.localEchoEnabled);
-//        ui->actionConnect->setEnabled(false);
-//        ui->actionDisconnect->setEnabled(true);
-//        ui->actionConfigure->setEnabled(false);
-//        showStatusMessage(tr("Connected to %1 : %2, %3, %4, %5, %6")
-//                          .arg(p.name).arg(p.stringBaudRate).arg(p.stringDataBits)
-//                          .arg(p.stringParity).arg(p.stringStopBits).arg(p.stringFlowControl));
-//    } else {
-//        QMessageBox::critical(this, tr("Error"), serial->errorString());
+/********************* Functions for UART ******************************/
+void MainWindow::uart_writeData(const QByteArray &data)
+{
+    serial->write(data);
+}
 
-//        showStatusMessage(tr("Open error"));
-//    }
-//}
-
-//void MainWindow::on_actionExit_triggered()
-//{
-//    QApplication::quit();
-//}
+void MainWindow::uart_readData()
+{
+    QByteArray data = serial->readAll();
+    qDebug(data);
+    ui->statusBar->showMessage(QString(data));
+    ui->plainTextEdit_textbox->insertPlainText(QString(data));
+}
 
 void MainWindow::on_actionExit_triggered()
 {
@@ -172,19 +150,84 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_actionUartConnect_triggered()
 {
-    if (ui->actionUartConnect->isChecked())
+    if (ui->actionUartConnect->isChecked()) // have not connected
     {
-        ui->actionUartConnect->setIcon(QIcon(":/new/prefix1/gtk-connect.png"));
-        ui->actionUartConnect->setToolTip("Click to disconnect UART.");
+        SettingsDialog::Settings p = settings->settings();
+        serial->setPortName(p.name);
+        serial->setBaudRate(p.baudRate);
+        serial->setDataBits(p.dataBits);
+        serial->setParity(p.parity);
+        serial->setStopBits(p.stopBits);
+        serial->setFlowControl(p.flowControl);
+        if (serial->open(QIODevice::ReadWrite)) {
+            //console->setEnabled(true);
+            //console->setLocalEchoEnabled(p.localEchoEnabled);
+            ui->actionUartConnect->setIcon(QIcon(":/new/prefix1/gtk-connect.png"));
+            ui->actionUartConnect->setToolTip("Click to disconnect UART.");
+            ui->actionUartConnect->setChecked(true);
+            ui->actionUartConfig->setEnabled(false);
+            ui->statusBar->showMessage(QString("Connected to %1 : %2, %3, %4, %5, %6")
+                              .arg(p.name).arg(p.stringBaudRate).arg(p.stringDataBits)
+                              .arg(p.stringParity).arg(p.stringStopBits).arg(p.stringFlowControl));
+        } else {
+            QMessageBox::critical(this, tr("Error"), serial->errorString());
+            ui->statusBar->showMessage("Open error");
+        }
     }
-    else
+    else // connected already
     {
-        ui->actionUartConnect->setIcon(QIcon(":/new/prefix1/gtk-disconnect.png"));
-        ui->actionUartConnect->setToolTip("Click to connect UART.");
+        QMessageBox msgBox;
+        msgBox.setText("Disconnect serial port");
+        msgBox.setInformativeText("Are you sure?");
+        msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::Cancel);
+        msgBox.setDefaultButton(QMessageBox::Cancel);
+        int ret = msgBox.exec();
+        switch (ret) {
+          case QMessageBox::Yes:
+            // Yes was clicked--> disconnect
+            if (serial->isOpen())
+                serial->close();
+            //console->setEnabled(false);
+            ui->actionUartConnect->setIcon(QIcon(":/new/prefix1/gtk-disconnect.png"));
+            ui->actionUartConnect->setToolTip("Click to connect UART.");
+            ui->actionUartConnect->setChecked(false);
+            ui->actionUartConfig->setEnabled(true);
+            ui->statusBar->showMessage("Disconnected");
+              break;
+          case QMessageBox::Cancel:
+            // Cancel was clicked
+            ui->actionUartConnect->setChecked(true);
+            break;
+          default:
+            // should never be reached
+            break;
+        }
+
+
     }
 }
 
 void MainWindow::on_actionUartConfig_triggered()
 {
+    settings->show();
+}
 
+void MainWindow::handleError(QSerialPort::SerialPortError error)
+{
+    if (error == QSerialPort::ResourceError) {
+    QMessageBox::critical(this, QString("Critical Error"), serial->errorString());
+    }
+
+}
+
+
+void MainWindow::on_pushButton_UartSendCommand_clicked()
+{
+    uart_writeData(ui->lineEdit_UartCommand->text().toLocal8Bit());
+}
+
+void MainWindow::on_actionQuickTest_triggered()
+{
+    QString str = "T"; // Test command in FPGA board
+    uart_writeData(str.toLocal8Bit());
 }
