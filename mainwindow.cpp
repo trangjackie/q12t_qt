@@ -183,3 +183,8 @@ void MainWindow::on_actionUartConnect_triggered()
         ui->actionUartConnect->setToolTip("Click to connect UART.");
     }
 }
+
+void MainWindow::on_actionUartConfig_triggered()
+{
+
+}

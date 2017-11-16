@@ -27,6 +27,8 @@ private slots:
 
     void on_actionUartConnect_triggered();
 
+    void on_actionUartConfig_triggered();
+
 private:
     Ui::MainWindow *ui;
     KeyboardQwerty *lineEditkeyboard;
