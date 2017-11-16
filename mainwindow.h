@@ -19,11 +19,14 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_Quit_clicked();
     void on_pushButton_uart_getport_clicked();
     void on_pushButton_uart_connect_clicked();
     void on_pushButton_write_start_clicked();
     void run_keyboard_lineEdit();
+    void on_actionExit_triggered();
+
+    void on_actionUartConnect_triggered();
+
 private:
     Ui::MainWindow *ui;
     KeyboardQwerty *lineEditkeyboard;

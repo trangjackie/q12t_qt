@@ -217,13 +217,28 @@
      <height>40</height>
     </size>
    </property>
+   <property name="sizeIncrement">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="baseSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
-    <bool>true</bool>
+    <bool>false</bool>
    </attribute>
    <addaction name="separator"/>
+   <addaction name="actionUartConfig"/>
+   <addaction name="actionUartConnect"/>
+   <addaction name="actionExit"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionExit">
@@ -241,7 +256,7 @@
    </property>
    <property name="icon">
     <iconset resource="icons/icons.qrc">
-     <normaloff>:/new/prefix1/gtk-connect.png</normaloff>:/new/prefix1/gtk-connect.png</iconset>
+     <normaloff>:/new/prefix1/gtk-disconnect.png</normaloff>:/new/prefix1/gtk-disconnect.png</iconset>
    </property>
    <property name="text">
     <string>UartConnect</string>

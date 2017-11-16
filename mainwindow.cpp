@@ -9,6 +9,7 @@
 #include <QDateTime>
 #include <QFile>
 #include <QTextStream>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -17,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     lineEditkeyboard = new KeyboardQwerty();
     this->setStyleSheet("background-color: rgba(215, 214,213, 100);");
-    serial = new QSerialPort(this);
+    //serial = new QSerialPort(this);
 
     // connect fuction for on-screen keyboard
     connect(ui->lineEdit_host_ip ,SIGNAL(selectionChanged()),this,SLOT(run_keyboard_lineEdit()));
@@ -118,31 +119,67 @@ void MainWindow::file_upload_to_host(QString filename,QString user,QString host_
 }
 
 // Functions for UART
-void MainWindow::openSerialPort()
-{
-    serial->setPortName(p.name);
-    serial->setBaudRate(p.baudRate);
-    serial->setDataBits(p.dataBits);
-    serial->setParity(p.parity);
-    serial->setStopBits(p.stopBits);
-    serial->setFlowControl(p.flowControl);
-    if (serial->open(QIODevice::ReadWrite)) {
-        console->setEnabled(true);
-        console->setLocalEchoEnabled(p.localEchoEnabled);
-        ui->actionConnect->setEnabled(false);
-        ui->actionDisconnect->setEnabled(true);
-        ui->actionConfigure->setEnabled(false);
-        showStatusMessage(tr("Connected to %1 : %2, %3, %4, %5, %6")
-                          .arg(p.name).arg(p.stringBaudRate).arg(p.stringDataBits)
-                          .arg(p.stringParity).arg(p.stringStopBits).arg(p.stringFlowControl));
-    } else {
-        QMessageBox::critical(this, tr("Error"), serial->errorString());
+//void MainWindow::openSerialPort()
+//{
+//    serial->setPortName(p.name);
+//    serial->setBaudRate(p.baudRate);
+//    serial->setDataBits(p.dataBits);
+//    serial->setParity(p.parity);
+//    serial->setStopBits(p.stopBits);
+//    serial->setFlowControl(p.flowControl);
+//    if (serial->open(QIODevice::ReadWrite)) {
+//        console->setEnabled(true);
+//        console->setLocalEchoEnabled(p.localEchoEnabled);
+//        ui->actionConnect->setEnabled(false);
+//        ui->actionDisconnect->setEnabled(true);
+//        ui->actionConfigure->setEnabled(false);
+//        showStatusMessage(tr("Connected to %1 : %2, %3, %4, %5, %6")
+//                          .arg(p.name).arg(p.stringBaudRate).arg(p.stringDataBits)
+//                          .arg(p.stringParity).arg(p.stringStopBits).arg(p.stringFlowControl));
+//    } else {
+//        QMessageBox::critical(this, tr("Error"), serial->errorString());
 
-        showStatusMessage(tr("Open error"));
-    }
-}
+//        showStatusMessage(tr("Open error"));
+//    }
+//}
+
+//void MainWindow::on_actionExit_triggered()
+//{
+//    QApplication::quit();
+//}
 
 void MainWindow::on_actionExit_triggered()
 {
-    QApplication::quit();
+    QMessageBox msgBox;
+    msgBox.setText("Quit program.");
+    msgBox.setInformativeText("Do you want to go?");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::Cancel);
+    msgBox.setDefaultButton(QMessageBox::Cancel);
+    int ret = msgBox.exec();
+    switch (ret) {
+      case QMessageBox::Yes:
+          // Yes was clicked
+        QApplication::quit();
+          break;
+      case QMessageBox::Cancel:
+          // Cancel was clicked
+          break;
+      default:
+          // should never be reached
+          break;
+    }
+}
+
+void MainWindow::on_actionUartConnect_triggered()
+{
+    if (ui->actionUartConnect->isChecked())
+    {
+        ui->actionUartConnect->setIcon(QIcon(":/new/prefix1/gtk-connect.png"));
+        ui->actionUartConnect->setToolTip("Click to disconnect UART.");
+    }
+    else
+    {
+        ui->actionUartConnect->setIcon(QIcon(":/new/prefix1/gtk-disconnect.png"));
+        ui->actionUartConnect->setToolTip("Click to connect UART.");
+    }
 }
