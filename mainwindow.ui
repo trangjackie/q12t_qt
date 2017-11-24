@@ -33,19 +33,19 @@
     <property name="geometry">
      <rect>
       <x>510</x>
-      <y>90</y>
+      <y>320</y>
       <width>281</width>
-      <height>311</height>
+      <height>81</height>
      </rect>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_host_ip">
     <property name="geometry">
      <rect>
-      <x>630</x>
+      <x>320</x>
       <y>0</y>
-      <width>161</width>
-      <height>26</height>
+      <width>130</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="inputMask">
@@ -55,10 +55,10 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>562</x>
-      <y>3</y>
-      <width>61</width>
-      <height>16</height>
+      <x>260</x>
+      <y>0</y>
+      <width>50</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
@@ -68,10 +68,10 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>562</x>
-      <y>34</y>
-      <width>61</width>
-      <height>16</height>
+      <x>500</x>
+      <y>0</y>
+      <width>40</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
@@ -81,30 +81,30 @@
    <widget class="QLineEdit" name="lineEdit_host_user">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>30</y>
-      <width>161</width>
-      <height>26</height>
+      <x>540</x>
+      <y>0</y>
+      <width>70</width>
+      <height>30</height>
      </rect>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_host_passwd">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>60</y>
-      <width>161</width>
-      <height>26</height>
+      <x>690</x>
+      <y>0</y>
+      <width>100</width>
+      <height>30</height>
      </rect>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>562</x>
-      <y>65</y>
-      <width>61</width>
-      <height>16</height>
+      <x>620</x>
+      <y>0</y>
+      <width>60</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
@@ -115,9 +115,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>20</y>
+      <y>0</y>
       <width>90</width>
-      <height>40</height>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
@@ -128,9 +128,9 @@
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>20</y>
+      <y>0</y>
       <width>80</width>
-      <height>40</height>
+      <height>30</height>
      </rect>
     </property>
     <property name="font">
@@ -144,7 +144,7 @@
     <property name="geometry">
      <rect>
       <x>190</x>
-      <y>20</y>
+      <y>0</y>
       <width>40</width>
       <height>40</height>
      </rect>
@@ -169,10 +169,10 @@
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>90</y>
-      <width>411</width>
-      <height>301</height>
+      <x>0</x>
+      <y>70</y>
+      <width>511</width>
+      <height>321</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -213,175 +213,622 @@
      </item>
      <item row="0" column="0" colspan="4">
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="2">
-        <widget class="QRadioButton" name="radioButton_5">
+       <item row="0" column="5">
+        <widget class="QRadioButton" name="radioButton_b1tid">
+         <property name="toolTip">
+          <string>6T cana power</string>
+         </property>
          <property name="text">
-          <string>C1</string>
-         </property>
-         <property name="icon">
-          <iconset resource="icons/icons.qrc">
-           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QRadioButton" name="radioButton_7">
-         <property name="text">
-          <string>C1</string>
-         </property>
-         <property name="icon">
-          <iconset resource="icons/icons.qrc">
-           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QRadioButton" name="radioButton_2">
-         <property name="text">
-          <string>C1</string>
-         </property>
-         <property name="icon">
-          <iconset resource="icons/icons.qrc">
-           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QRadioButton" name="radioButton_3">
-         <property name="text">
-          <string>C1</string>
-         </property>
-         <property name="icon">
-          <iconset resource="icons/icons.qrc">
-           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="2">
-        <widget class="QRadioButton" name="radioButton_12">
-         <property name="text">
-          <string>C1</string>
-         </property>
-         <property name="icon">
-          <iconset resource="icons/icons.qrc">
-           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+          <string>6T_1b</string>
          </property>
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QRadioButton" name="radioButton_8">
-         <property name="text">
-          <string>C1</string>
+        <widget class="QRadioButton" name="radioButton_b11">
+         <property name="toolTip">
+          <string>weQuatro Cana</string>
          </property>
-         <property name="icon">
-          <iconset resource="icons/icons.qrc">
-           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+         <property name="text">
+          <string>weQ_11</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QRadioButton" name="radioButton_b14">
+         <property name="toolTip">
+          <string>weQuatro cana MIM</string>
+         </property>
+         <property name="text">
+          <string>weQ_14</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="5">
+        <widget class="QRadioButton" name="radioButton_b1">
+         <property name="toolTip">
+          <string>6T cana</string>
+         </property>
+         <property name="text">
+          <string>6T_1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QRadioButton" name="radioButton_b10">
+         <property name="toolTip">
+          <string>weQuatro cana power</string>
+         </property>
+         <property name="text">
+          <string>weQ_10</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QRadioButton" name="radioButton_b12">
+         <property name="toolTip">
+          <string>weQuatro cana powr X1</string>
+         </property>
+         <property name="text">
+          <string>weQ_12</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QRadioButton" name="radioButton_b15">
+         <property name="toolTip">
+          <string>weQuatro Cana power</string>
+         </property>
+         <property name="text">
+          <string>weQ_15</string>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QRadioButton" name="radioButton_4">
+        <widget class="QRadioButton" name="radioButton_b13">
+         <property name="toolTip">
+          <string>weQuatro Cana MIM</string>
+         </property>
          <property name="text">
-          <string>C1</string>
-         </property>
-         <property name="icon">
-          <iconset resource="icons/icons.qrc">
-           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QRadioButton" name="radioButton">
-         <property name="text">
-          <string>C1</string>
-         </property>
-         <property name="icon">
-          <iconset resource="icons/icons.qrc">
-           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QRadioButton" name="radioButton_6">
-         <property name="text">
-          <string>C1</string>
-         </property>
-         <property name="icon">
-          <iconset resource="icons/icons.qrc">
-           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="2">
-        <widget class="QRadioButton" name="radioButton_9">
-         <property name="text">
-          <string>C1</string>
-         </property>
-         <property name="icon">
-          <iconset resource="icons/icons.qrc">
-           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QRadioButton" name="radioButton_11">
-         <property name="text">
-          <string>C1</string>
-         </property>
-         <property name="icon">
-          <iconset resource="icons/icons.qrc">
-           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QRadioButton" name="radioButton_10">
-         <property name="text">
-          <string>C1</string>
-         </property>
-         <property name="icon">
-          <iconset resource="icons/icons.qrc">
-           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QRadioButton" name="radioButton_13">
-         <property name="text">
-          <string>C1</string>
-         </property>
-         <property name="icon">
-          <iconset resource="icons/icons.qrc">
-           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+          <string>weQ_13</string>
          </property>
         </widget>
        </item>
        <item row="4" column="1">
-        <widget class="QRadioButton" name="radioButton_14">
-         <property name="text">
-          <string>C1</string>
+        <widget class="QRadioButton" name="radioButton_b7">
+         <property name="toolTip">
+          <string>weQuatro basic</string>
          </property>
-         <property name="icon">
-          <iconset resource="icons/icons.qrc">
-           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+         <property name="text">
+          <string>weQ_7</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QRadioButton" name="radioButton_b5">
+         <property name="toolTip">
+          <string>weQuatro cana power longPC</string>
+         </property>
+         <property name="text">
+          <string>weQ_5</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="3">
+        <widget class="QRadioButton" name="radioButton_b4">
+         <property name="toolTip">
+          <string>weQuatro cana power longPC</string>
+         </property>
+         <property name="text">
+          <string>weQ_4</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="5">
+        <widget class="QRadioButton" name="radioButton_b3">
+         <property name="toolTip">
+          <string>6T cana MIM</string>
+         </property>
+         <property name="text">
+          <string>6T_3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="5">
+        <widget class="QRadioButton" name="radioButton_b2">
+         <property name="toolTip">
+          <string>6T cana power</string>
+         </property>
+         <property name="text">
+          <string>6T_2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="5">
+        <widget class="QRadioButton" name="radioButton_b0">
+         <property name="toolTip">
+          <string>6T basic</string>
+         </property>
+         <property name="text">
+          <string>6T_0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="3">
+        <widget class="QRadioButton" name="radioButton_b6">
+         <property name="toolTip">
+          <string>10T Quatro basic</string>
+         </property>
+         <property name="text">
+          <string>Q10T_6</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3">
+        <widget class="QRadioButton" name="radioButton_b8">
+         <property name="toolTip">
+          <string>10T Quatro basic MIM</string>
+         </property>
+         <property name="text">
+          <string>Q10T_8</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <widget class="QLabel" name="label_SER_b14">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0.00%</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QRadioButton" name="radioButton_b9">
+         <property name="toolTip">
+          <string>weQuatro basic MIM</string>
+         </property>
+         <property name="text">
+          <string>weQ_9</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="label_SER_b15_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0.00%</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="6">
+        <widget class="QLabel" name="label_SER_b1b">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0.00%</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLabel" name="label_SER_b13">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0.00%</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="label_SER_b11">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0.00%</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QLabel" name="label_SER_b9">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0.00%</string>
          </property>
         </widget>
        </item>
        <item row="4" column="2">
-        <widget class="QRadioButton" name="radioButton_15">
-         <property name="text">
-          <string>C1</string>
+        <widget class="QLabel" name="label_SER_b7">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
-         <property name="icon">
-          <iconset resource="icons/icons.qrc">
-           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0.00%</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QLabel" name="label_SER_b5">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0.00%</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QLabel" name="label_SER_b12">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0.00%</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="4">
+        <widget class="QLabel" name="label_SER_b10">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0.00%</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="4">
+        <widget class="QLabel" name="label_SER_b8">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0.00%</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="4">
+        <widget class="QLabel" name="label_SER_b6">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0.00%</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="4">
+        <widget class="QLabel" name="label_SER_b4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0.00%</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="6">
+        <widget class="QLabel" name="label_SER_b3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0.00%</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="6">
+        <widget class="QLabel" name="label_SER_b2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0.00%</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="6">
+        <widget class="QLabel" name="label_SER_b1">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0.00%</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="6">
+        <widget class="QLabel" name="label_SER_b0">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>0.00%</string>
          </property>
         </widget>
        </item>
       </layout>
      </item>
      <item row="2" column="2">
-      <widget class="QPushButton" name="pushButton_DUT_SRAM_Write_3">
+      <widget class="QPushButton" name="pushButton_DUT_SRAM_Read">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -405,7 +852,7 @@
        </property>
        <property name="icon">
         <iconset resource="icons/icons.qrc">
-         <normaloff>:/new/prefix1/package-upgrade.svg</normaloff>:/new/prefix1/package-upgrade.svg</iconset>
+         <normaloff>:/new/prefix1/package-downgrade.svg</normaloff>:/new/prefix1/package-downgrade.svg</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -484,7 +931,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Write data</string>
+        <string>Read SRAM</string>
        </property>
       </widget>
      </item>
@@ -538,7 +985,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Write data</string>
+        <string>Write AA data</string>
        </property>
       </widget>
      </item>
@@ -562,6 +1009,70 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>180</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Select for bitmap</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>300</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>console</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_bitmap">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>40</y>
+      <width>128</width>
+      <height>256</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="icons/icons.qrc">:/new/prefix1/edit-clear2.svg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_bitmap_2">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>40</y>
+      <width>128</width>
+      <height>256</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="icons/icons.qrc">:/new/prefix1/edit-clear2.svg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
    </widget>
   </widget>
   <widget class="QToolBar" name="mainToolBar">

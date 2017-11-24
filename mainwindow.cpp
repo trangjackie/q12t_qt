@@ -11,6 +11,9 @@
 #include <QTextStream>
 #include <QMessageBox>
 #include <QTextCodec>
+#include <QImage>
+#include <QGraphicsPixmapItem>
+#include <QTime>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -59,26 +62,26 @@ void MainWindow::run_keyboard_lineEdit()
 }
 
 
-void MainWindow::on_pushButton_write_start_clicked()
-{
-    QString filename = "Write_"+get_time_string()+".txt";
-    QString file_content;
+//void MainWindow::on_pushButton_write_start_clicked()
+//{
+//    QString filename = "Write_"+get_time_string()+".txt";
+//    QString file_content;
 
-    QFile file( filename );
-    if ( file.open(QIODevice::ReadWrite) )
-    {
-        QTextStream stream( &file );
-        stream << "something" << endl;
-    }
+//    QFile file( filename );
+//    if ( file.open(QIODevice::ReadWrite) )
+//    {
+//        QTextStream stream( &file );
+//        stream << "something" << endl;
+//    }
 
-    file.close();
-    // read back for verifing the file content
-    file_content = file_read(filename);
-    ui->plainTextEdit_textbox->document()->setPlainText(file_content);
+//    file.close();
+//    // read back for verifing the file content
+//    file_content = file_read(filename);
+//    ui->plainTextEdit_textbox->document()->setPlainText(file_content);
 
-    // upload file to server
-    file_upload_to_host(filename,ui->lineEdit_host_user->text(),ui->lineEdit_host_ip->text());
-}
+//    // upload file to server
+//    file_upload_to_host(filename,ui->lineEdit_host_user->text(),ui->lineEdit_host_ip->text());
+//}
 
 QString MainWindow::get_time_string()
 {
@@ -121,9 +124,24 @@ void MainWindow::uart_writeData(const QByteArray &data)
 void MainWindow::uart_readData()
 {
     QByteArray data = serial->readAll();
+
+    QString st_debug;
+    while (serial->waitForReadyRead(50))
+            data.append(serial->readAll());
+
+    if (serial->error() == QSerialPort::ReadError) {
+        qDebug("Failed to read from port "+serial->portName().toLatin1()+", error: "+serial->errorString().toLatin1());
+    } else if (serial->error() == QSerialPort::TimeoutError && data.isEmpty()) {
+        qDebug("No data was currently available for reading from port "+serial->portName().toLatin1());
+    }
+
+    qDebug("Data successfully received from port "+serial->portName().toLatin1());
     qDebug(data);
-    ui->statusBar->showMessage(QString(data));
+    ui->statusBar->showMessage("Data length "+QString::number(data.length(),10));
+    ui->plainTextEdit_textbox->clear();
     ui->plainTextEdit_textbox->insertPlainText(QString(data));
+
+    convert_data_to_image(data);
 }
 
 void MainWindow::on_actionExit_triggered()
@@ -229,5 +247,67 @@ void MainWindow::on_pushButton_UartSendCommand_clicked()
 void MainWindow::on_actionQuickTest_triggered()
 {
     QString str = "T"; // Test command in FPGA board
+    uart_writeData(str.toLocal8Bit());
+}
+
+void MainWindow::convert_data_to_image(QByteArray byte_data)
+{
+    char cdata,cmask;
+
+    QImage img(128, 256, QImage::Format_RGB888);
+    img.fill(QColor(Qt::white).rgb());
+
+    for (int x = 0; x < 16; x++)
+    {
+        for (int y = 0; y < 256; y++)
+        {
+            if ((x*256+y)<=(byte_data.length()-1)){
+                cdata = byte_data.at(x*256+y);
+            }
+            else {
+                cdata = 0;
+            }
+            cmask = 0x01;
+            for (int b = 0; b<8;b++)
+            {
+                if ((cdata&cmask)==cmask)
+                {
+                    img.setPixel(16*b+x, 255-y, qRgb(255, 255, 255));
+                }
+                else
+                {
+                    img.setPixel(16*b+x, 255-y, qRgb(0, 0, 0));
+                }
+                cmask = cmask<<1;
+                // show data on bitmap
+                //ui->label_bitmap->setPixmap(QPixmap::fromImage(img));
+                //my_delay(10);
+            }
+        }
+    }
+
+    // show data on bitmap
+    ui->label_bitmap->setPixmap(QPixmap::fromImage(img));
+}
+
+void MainWindow::my_delay( int millisecondsToWait )
+{
+    QTime dieTime = QTime::currentTime().addMSecs( millisecondsToWait );
+    while( QTime::currentTime() < dieTime )
+    {
+        QCoreApplication::processEvents( QEventLoop::AllEvents, 100 );
+    }
+}
+
+void MainWindow::on_pushButton_DUT_SRAM_Read_clicked()
+{
+    QString str = "U"; // Read all data from memory (DUT)
+    uart_writeData(str.toLocal8Bit());
+
+}
+
+void MainWindow::on_pushButton_DUT_SRAM_Write_clicked()
+{
+    QString str = "W"; // Write data to memory (DUT)
     uart_writeData(str.toLocal8Bit());
 }

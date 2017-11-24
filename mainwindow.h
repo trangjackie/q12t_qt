@@ -20,7 +20,6 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_write_start_clicked();
     void run_keyboard_lineEdit();
     void on_actionExit_triggered();
 
@@ -36,6 +35,10 @@ private slots:
 
     void on_actionQuickTest_triggered();
 
+    void on_pushButton_DUT_SRAM_Read_clicked();
+
+    void on_pushButton_DUT_SRAM_Write_clicked();
+
 private:
     Ui::MainWindow *ui;
     KeyboardQwerty *lineEditkeyboard;
@@ -48,6 +51,8 @@ private:
     QString file_read(QString filename);
 
     void uart_writeData(const QByteArray &data);
+    void convert_data_to_image(QByteArray byte_data);
+    void my_delay( int millisecondsToWait );
 };
 
 #endif // MAINWINDOW_H

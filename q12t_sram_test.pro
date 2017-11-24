@@ -27,7 +27,8 @@ HEADERS  += mainwindow.h \
 FORMS    += mainwindow.ui \
     keyboard/keyboard.ui \
     keyboardqwerty/keyboardqwerty.ui \
-    uart/settingsdialog.ui
+    uart/settingsdialog.ui \
+    bitmap_all.ui
 
 # for rpi lcd with user pi
 target.path=/home/pi/qtapp
