@@ -39,6 +39,12 @@ private slots:
 
     void on_pushButton_DUT_SRAM_Write_clicked();
 
+    void on_pushButton_DUT_SRAM_Write_FF_clicked();
+
+    void on_pushButton_DUT_SRAM_Write_00_clicked();
+
+    void on_pushButton_DUT_SRAM_Write_A5_clicked();
+
 private:
     Ui::MainWindow *ui;
     KeyboardQwerty *lineEditkeyboard;

@@ -308,6 +308,24 @@ void MainWindow::on_pushButton_DUT_SRAM_Read_clicked()
 
 void MainWindow::on_pushButton_DUT_SRAM_Write_clicked()
 {
-    QString str = "W"; // Write data to memory (DUT)
+    QString str = "A"; // Write data to memory (DUT)
+    uart_writeData(str.toLocal8Bit());
+}
+
+void MainWindow::on_pushButton_DUT_SRAM_Write_FF_clicked()
+{
+    QString str = "F"; // Write data to memory (DUT)
+    uart_writeData(str.toLocal8Bit());
+}
+
+void MainWindow::on_pushButton_DUT_SRAM_Write_00_clicked()
+{
+    QString str = "0"; // Write data to memory (DUT)
+    uart_writeData(str.toLocal8Bit());
+}
+
+void MainWindow::on_pushButton_DUT_SRAM_Write_A5_clicked()
+{
+    QString str = "5"; // Write data to memory (DUT)
     uart_writeData(str.toLocal8Bit());
 }
