@@ -45,12 +45,19 @@ private slots:
 
     void on_pushButton_DUT_SRAM_Write_A5_clicked();
 
+    void block_select_handle();
+
 private:
     Ui::MainWindow *ui;
     KeyboardQwerty *lineEditkeyboard;
     SettingsDialog *settings;
     QSerialPort *serial;
-
+    QByteArray *sram_data;
+    int selected_block;
+    float fWER[17];
+    float fSER[17];
+    char flag_kind_ER;
+    char flag_data_pattern;
 private:
     void file_upload_to_host(QString filename,QString user,QString host_ip_path);
     QString get_time_string();
@@ -59,6 +66,11 @@ private:
     void uart_writeData(const QByteArray &data);
     void convert_data_to_image(QByteArray byte_data);
     void my_delay( int millisecondsToWait );
+    void radiobutton_block_select_setup();
+    void calculate_WER(QByteArray byte_data);
+    void calculate_SER(QByteArray byte_data);
+    void calculate_ER();
+
 };
 
 #endif // MAINWINDOW_H

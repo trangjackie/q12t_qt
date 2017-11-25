@@ -169,10 +169,10 @@
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>70</y>
-      <width>651</width>
-      <height>323</height>
+      <width>641</width>
+      <height>321</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -230,6 +230,11 @@
        </item>
        <item row="0" column="4">
         <widget class="QLabel" name="label_7">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Block</string>
          </property>
@@ -534,6 +539,9 @@
          </property>
          <property name="text">
           <string>6T_0</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -922,6 +930,11 @@
        </item>
        <item row="0" column="1">
         <widget class="QLabel" name="label_6">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Block</string>
          </property>
@@ -984,8 +997,13 @@
        </item>
        <item row="0" column="2">
         <widget class="QLabel" name="label_11">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
-          <string>SER(%)</string>
+          <string>SER(‰)</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -994,6 +1012,11 @@
        </item>
        <item row="0" column="7">
         <widget class="QLabel" name="label_8">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Block</string>
          </property>
@@ -1030,8 +1053,13 @@
        </item>
        <item row="0" column="3">
         <widget class="QLabel" name="label_12">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
-          <string>WER</string>
+          <string>WER(‰)</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -1040,8 +1068,13 @@
        </item>
        <item row="0" column="5">
         <widget class="QLabel" name="label_13">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
-          <string>SER(%)</string>
+          <string>SER(‰)</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -1050,8 +1083,13 @@
        </item>
        <item row="0" column="8">
         <widget class="QLabel" name="label_14">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
-          <string>SER(%)</string>
+          <string>SER(‰)</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -1060,8 +1098,13 @@
        </item>
        <item row="0" column="6">
         <widget class="QLabel" name="label_15">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
-          <string>WER</string>
+          <string>WER(‰)</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -1070,8 +1113,13 @@
        </item>
        <item row="0" column="9">
         <widget class="QLabel" name="label_16">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
          <property name="text">
-          <string>WER(%)</string>
+          <string>WER(‰)</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
