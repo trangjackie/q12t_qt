@@ -104,7 +104,7 @@ void MainWindow::block_select_handle()
     if (ui->radioButton_b13->isChecked()){selected_block = 13; }
     if (ui->radioButton_b14->isChecked()){selected_block = 14; }
     if (ui->radioButton_b15->isChecked()){selected_block = 15; }
-    //if (ui->radioButton_b1tid->isChecked()){selected_block = 16; }
+    if (ui->radioButton_b1tid->isChecked()){selected_block = 16; }
 
     // show bitmap of selected block (if have)
     if (sram_data->length()>0)
