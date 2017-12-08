@@ -1003,7 +1003,7 @@
           </font>
          </property>
          <property name="text">
-          <string>SER(‰)</string>
+          <string>SER</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -1059,7 +1059,7 @@
           </font>
          </property>
          <property name="text">
-          <string>WER(‰)</string>
+          <string>WER</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -1074,7 +1074,7 @@
           </font>
          </property>
          <property name="text">
-          <string>SER(‰)</string>
+          <string>SER</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -1089,7 +1089,7 @@
           </font>
          </property>
          <property name="text">
-          <string>SER(‰)</string>
+          <string>SER</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -1104,7 +1104,7 @@
           </font>
          </property>
          <property name="text">
-          <string>WER(‰)</string>
+          <string>WER</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -1119,7 +1119,7 @@
           </font>
          </property>
          <property name="text">
-          <string>WER(‰)</string>
+          <string>WER</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -1633,7 +1633,7 @@
       </widget>
      </item>
      <item row="2" column="2">
-      <widget class="QPushButton" name="pushButton_DUT_SRAM_Write_Worst">
+      <widget class="QPushButton" name="pushButton_DUT_SRAM_Write_55">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -1653,7 +1653,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Worst</string>
+        <string>55</string>
        </property>
        <property name="icon">
         <iconset resource="icons/icons.qrc">
@@ -1786,6 +1786,52 @@
     </property>
     <property name="scaledContents">
      <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_Temp">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>30</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>30</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Temp. (C)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_17">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>30</y>
+      <width>50</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>VDD(V)</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_VDD">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>30</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
     </property>
    </widget>
   </widget>

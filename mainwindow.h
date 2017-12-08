@@ -47,6 +47,8 @@ private slots:
 
     void block_select_handle();
 
+    void on_pushButton_DUT_SRAM_Write_55_clicked();
+
 private:
     Ui::MainWindow *ui;
     KeyboardQwerty *lineEditkeyboard;
@@ -54,8 +56,8 @@ private:
     QSerialPort *serial;
     QByteArray *sram_data;
     int selected_block;
-    float fWER[17];
-    float fSER[17];
+    int iWER[17];
+    int iSER[17];
     char flag_kind_ER;
     char flag_data_pattern;
 private:
@@ -70,6 +72,7 @@ private:
     void calculate_WER(QByteArray byte_data);
     void calculate_SER(QByteArray byte_data);
     void calculate_ER();
+    void write_report(QString st_data);
 
 };
 

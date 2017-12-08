@@ -8,6 +8,7 @@
 #include <QComboBox>
 #include <QDateTime>
 #include <QFile>
+#include <QFileInfo>
 #include <QTextStream>
 #include <QMessageBox>
 #include <QTextCodec>
@@ -35,6 +36,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->lineEdit_host_user,SIGNAL(selectionChanged()),this,SLOT(run_keyboard_lineEdit()));
     connect(ui->lineEdit_host_passwd,SIGNAL(selectionChanged()),this,SLOT(run_keyboard_lineEdit()));
     connect(ui->lineEdit_UartCommand,SIGNAL(selectionChanged()),this,SLOT(run_keyboard_lineEdit()));
+    connect(ui->lineEdit_Temp,SIGNAL(selectionChanged()),this,SLOT(run_keyboard_lineEdit()));
+    connect(ui->lineEdit_VDD,SIGNAL(selectionChanged()),this,SLOT(run_keyboard_lineEdit()));
     // Currently, onscreen keyboard only support line edit
     //connect(ui->plainTextEdit_textbox,SIGNAL(selectionChanged()),this,SLOT(run_keyboard_lineEdit()));
     // SRAM data storage
@@ -113,26 +116,28 @@ void MainWindow::block_select_handle()
     }
 }
 
-//void MainWindow::on_pushButton_write_start_clicked()
-//{
-//    QString filename = "Write_"+get_time_string()+".txt";
-//    QString file_content;
-
-//    QFile file( filename );
-//    if ( file.open(QIODevice::ReadWrite) )
-//    {
-//        QTextStream stream( &file );
-//        stream << "something" << endl;
-//    }
-
-//    file.close();
-//    // read back for verifing the file content
-//    file_content = file_read(filename);
-//    ui->plainTextEdit_textbox->document()->setPlainText(file_content);
-
-//    // upload file to server
-//    file_upload_to_host(filename,ui->lineEdit_host_user->text(),ui->lineEdit_host_ip->text());
-//}
+void MainWindow::write_report(QString st_data)
+{
+    QString filename = "SRAM_Log.txt";
+    QString st_time = get_time_string();
+    QFile file( filename );
+    QFileInfo check_file(filename);
+    // check if file exists and if yes: Is it really a file and no directory?
+    if (check_file.exists() && check_file.isFile()) { // add more data to file
+        if (file.open(QFile::Append))
+        {
+                QTextStream stream(&file);
+                stream << st_time+" "+st_data+"\n" << endl;
+        }
+    } else { // open new file
+        if ( file.open(QIODevice::ReadWrite) )
+        {
+            QTextStream stream( &file );
+            stream << st_time+" "+st_data+"\n" << endl;
+        }
+    }
+    file.close();
+}
 
 QString MainWindow::get_time_string()
 {
@@ -194,6 +199,7 @@ void MainWindow::uart_readData()
     convert_data_to_image(*sram_data);
 
     calculate_ER();
+
 }
 
 void MainWindow::on_actionExit_triggered()
@@ -390,10 +396,18 @@ void MainWindow::on_pushButton_DUT_SRAM_Write_A5_clicked()
     flag_kind_ER = 'W';
 }
 
+void MainWindow::on_pushButton_DUT_SRAM_Write_55_clicked()
+{
+    QString str = "6"; // Write data to memory (DUT)
+    uart_writeData(str.toLocal8Bit());
+    flag_data_pattern = 0b01010101;
+    flag_kind_ER = 'W';
+}
+
 void MainWindow::calculate_WER(QByteArray byte_data)
 {
     for (int i=0;i<17;i++){
-        fWER[i]=0;
+        iWER[i]=0;
     }
 
     // estimate error rate
@@ -412,7 +426,7 @@ void MainWindow::calculate_WER(QByteArray byte_data)
                 if (flag_data_pattern==0b10100101)
                 {
                     if((y%2)==0){
-                        if ((0b01011010&cmask)==cmask)
+                        if ((flag_data_pattern&cmask)==cmask)
                         {
                             b_array[16*b+x][255-y] = true;
                         }
@@ -421,7 +435,7 @@ void MainWindow::calculate_WER(QByteArray byte_data)
                             b_array[16*b+x][255-y] = false;
                         }
                     }else{
-                        if ((flag_data_pattern&cmask)==cmask)
+                        if ((0b01011010&cmask)==cmask)
                         {
                             b_array[16*b+x][255-y] = true;
                         }
@@ -479,33 +493,33 @@ void MainWindow::calculate_WER(QByteArray byte_data)
                 }
             }
         }
-        fWER[bl]=(float)(i_error); // do not compare the 255th row
+        iWER[bl]=i_error; // do not compare the 255th row
 
     }
     // update data to labels
-    ui->label_WER_b0->setText(QString::number( fWER[0], 'f', 0 ));
-    ui->label_WER_b1->setText(QString::number( fWER[1], 'f', 0 ));
-    ui->label_WER_b2->setText(QString::number( fWER[2], 'f', 0 ));
-    ui->label_WER_b3->setText(QString::number( fWER[3], 'f', 0 ));
-    ui->label_WER_b4->setText(QString::number( fWER[4], 'f', 0 ));
-    ui->label_WER_b5->setText(QString::number( fWER[5], 'f', 0 ));
-    ui->label_WER_b6->setText(QString::number( fWER[6], 'f', 0 ));
-    ui->label_WER_b7->setText(QString::number( fWER[7], 'f', 0 ));
-    ui->label_WER_b8->setText(QString::number( fWER[8], 'f', 0 ));
-    ui->label_WER_b9->setText(QString::number( fWER[9], 'f', 0 ));
-    ui->label_WER_b10->setText(QString::number( fWER[10], 'f', 0 ));
-    ui->label_WER_b11->setText(QString::number( fWER[11], 'f', 0 ));
-    ui->label_WER_b12->setText(QString::number( fWER[12], 'f', 0 ));
-    ui->label_WER_b13->setText(QString::number( fWER[13], 'f', 0 ));
-    ui->label_WER_b14->setText(QString::number( fWER[14], 'f', 0 ));
-    ui->label_WER_b15->setText(QString::number( fWER[15], 'f', 0 ));
-    ui->label_WER_b1b->setText(QString::number( fWER[16], 'f', 0 ));
+    ui->label_WER_b0->setText(QString::number( iWER[0]));
+    ui->label_WER_b1->setText(QString::number( iWER[1]));
+    ui->label_WER_b2->setText(QString::number( iWER[2]));
+    ui->label_WER_b3->setText(QString::number( iWER[3]));
+    ui->label_WER_b4->setText(QString::number( iWER[4]));
+    ui->label_WER_b5->setText(QString::number( iWER[5]));
+    ui->label_WER_b6->setText(QString::number( iWER[6]));
+    ui->label_WER_b7->setText(QString::number( iWER[7]));
+    ui->label_WER_b8->setText(QString::number( iWER[8]));
+    ui->label_WER_b9->setText(QString::number( iWER[9]));
+    ui->label_WER_b10->setText(QString::number( iWER[10]));
+    ui->label_WER_b11->setText(QString::number( iWER[11]));
+    ui->label_WER_b12->setText(QString::number( iWER[12]));
+    ui->label_WER_b13->setText(QString::number( iWER[13]));
+    ui->label_WER_b14->setText(QString::number( iWER[14]));
+    ui->label_WER_b15->setText(QString::number( iWER[15]));
+    ui->label_WER_b1b->setText(QString::number( iWER[16]));
 }
 
 void MainWindow::calculate_SER(QByteArray byte_data)
 {
     for (int i=0;i<17;i++){
-        fSER[i]=0;
+        iSER[i]=0;
     }
 
     // estimate error rate
@@ -524,7 +538,7 @@ void MainWindow::calculate_SER(QByteArray byte_data)
                 if (flag_data_pattern==0b10100101)
                 {
                     if((y%2)==0){
-                        if ((0b01011010&cmask)==cmask)
+                        if ((flag_data_pattern&cmask)==cmask)
                         {
                             b_array[16*b+x][255-y] = true;
                         }
@@ -533,7 +547,7 @@ void MainWindow::calculate_SER(QByteArray byte_data)
                             b_array[16*b+x][255-y] = false;
                         }
                     }else{
-                        if ((flag_data_pattern&cmask)==cmask)
+                        if ((0b01011010&cmask)==cmask)
                         {
                             b_array[16*b+x][255-y] = true;
                         }
@@ -591,36 +605,50 @@ void MainWindow::calculate_SER(QByteArray byte_data)
                 }
             }
         }
-        fSER[bl]=(float)(i_error); // do not compare the 255th row
+        iSER[bl]=i_error; // do not compare the 255th row
 
     }
     // update data to labels
-    ui->label_SER_b0->setText(QString::number( fSER[0], 'f', 0 ));
-    ui->label_SER_b1->setText(QString::number( fSER[1], 'f', 0 ));
-    ui->label_SER_b2->setText(QString::number( fSER[2], 'f', 0 ));
-    ui->label_SER_b3->setText(QString::number( fSER[3], 'f', 0 ));
-    ui->label_SER_b4->setText(QString::number( fSER[4], 'f', 0 ));
-    ui->label_SER_b5->setText(QString::number( fSER[5], 'f', 0 ));
-    ui->label_SER_b6->setText(QString::number( fSER[6], 'f', 0 ));
-    ui->label_SER_b7->setText(QString::number( fSER[7], 'f', 0 ));
-    ui->label_SER_b8->setText(QString::number( fSER[8], 'f', 0 ));
-    ui->label_SER_b9->setText(QString::number( fSER[9], 'f', 0 ));
-    ui->label_SER_b10->setText(QString::number( fSER[10], 'f', 0 ));
-    ui->label_SER_b11->setText(QString::number( fSER[11], 'f', 0 ));
-    ui->label_SER_b12->setText(QString::number( fSER[12], 'f', 0 ));
-    ui->label_SER_b13->setText(QString::number( fSER[13], 'f', 0 ));
-    ui->label_SER_b14->setText(QString::number( fSER[14], 'f', 0 ));
-    ui->label_SER_b15->setText(QString::number( fSER[15], 'f', 0 ));
-    ui->label_SER_b1b->setText(QString::number( fSER[16], 'f', 0 ));
+    ui->label_SER_b0->setText(QString::number( iSER[0]));
+    ui->label_SER_b1->setText(QString::number( iSER[1]));
+    ui->label_SER_b2->setText(QString::number( iSER[2]));
+    ui->label_SER_b3->setText(QString::number( iSER[3]));
+    ui->label_SER_b4->setText(QString::number( iSER[4]));
+    ui->label_SER_b5->setText(QString::number( iSER[5]));
+    ui->label_SER_b6->setText(QString::number( iSER[6]));
+    ui->label_SER_b7->setText(QString::number( iSER[7]));
+    ui->label_SER_b8->setText(QString::number( iSER[8]));
+    ui->label_SER_b9->setText(QString::number( iSER[9]));
+    ui->label_SER_b10->setText(QString::number( iSER[10]));
+    ui->label_SER_b11->setText(QString::number( iSER[11]));
+    ui->label_SER_b12->setText(QString::number( iSER[12]));
+    ui->label_SER_b13->setText(QString::number( iSER[13]));
+    ui->label_SER_b14->setText(QString::number( iSER[14]));
+    ui->label_SER_b15->setText(QString::number( iSER[15]));
+    ui->label_SER_b1b->setText(QString::number( iSER[16]));
 }
 
 void MainWindow::calculate_ER()
 {
+    QString st_data;
+    st_data = ui->lineEdit_Temp->text() +" "+ ui->lineEdit_VDD->text() + " ";
     if(flag_kind_ER=='W'){
         calculate_WER(*sram_data);
+        st_data += "W "+QString::number(flag_data_pattern,2);
+        for (int i=0;i<17;i++){
+            st_data += " "+QString::number(iWER[i]);
+        }
     }
     else if(flag_kind_ER=='S')
     {
         calculate_SER(*sram_data);
+        st_data += "S "+QString::number(flag_data_pattern,2);
+        for (int i=0;i<17;i++){
+            st_data += " "+QString::number(iSER[i]);
+        }
     }
+
+    write_report(st_data);
 }
+
+
