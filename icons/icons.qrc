@@ -18,5 +18,8 @@
         <file>edit-clear2.svg</file>
         <file>media-playback-start.png</file>
         <file>media-seek-forward.png</file>
+        <file>media-playback-stop.svg</file>
+        <file>media-record.svg</file>
+        <file>wmtweaks.svg</file>
     </qresource>
 </RCC>

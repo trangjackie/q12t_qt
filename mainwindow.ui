@@ -87,6 +87,9 @@
       <height>30</height>
      </rect>
     </property>
+    <property name="text">
+     <string>c1</string>
+    </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_host_passwd">
     <property name="geometry">
@@ -172,7 +175,7 @@
       <x>10</x>
       <y>70</y>
       <width>641</width>
-      <height>321</height>
+      <height>331</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -1490,6 +1493,39 @@
          </property>
         </widget>
        </item>
+       <item row="6" column="7">
+        <widget class="QLabel" name="label_18">
+         <property name="text">
+          <string>Timer(s)</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="9">
+        <widget class="QLabel" name="label_SER_counted_test">
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="8">
+        <widget class="QLineEdit" name="lineEdit_timer">
+         <property name="maximumSize">
+          <size>
+           <width>60</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>10</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item row="3" column="1">
@@ -1690,11 +1726,11 @@
           </size>
          </property>
          <property name="text">
-          <string>Auto</string>
+          <string>SER Rand.</string>
          </property>
          <property name="icon">
           <iconset resource="icons/icons.qrc">
-           <normaloff>:/new/prefix1/package-upgrade.svg</normaloff>:/new/prefix1/package-upgrade.svg</iconset>
+           <normaloff>:/new/prefix1/start-here.svg</normaloff>:/new/prefix1/start-here.svg</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -1707,7 +1743,7 @@
       </layout>
      </item>
      <item row="3" column="3">
-      <widget class="QPushButton" name="pushButton_DUT_SRAM_Read_2">
+      <widget class="QPushButton" name="pushButton_DUT_SRAM_SER_test">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -1727,11 +1763,11 @@
         </size>
        </property>
        <property name="text">
-        <string>Realtime</string>
+        <string>SER stand.</string>
        </property>
        <property name="icon">
         <iconset resource="icons/icons.qrc">
-         <normaloff>:/new/prefix1/package-downgrade.svg</normaloff>:/new/prefix1/package-downgrade.svg</iconset>
+         <normaloff>:/new/prefix1/view-refresh.svg</normaloff>:/new/prefix1/view-refresh.svg</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -1775,7 +1811,7 @@
       <x>660</x>
       <y>40</y>
       <width>128</width>
-      <height>256</height>
+      <height>259</height>
      </rect>
     </property>
     <property name="text">
@@ -1796,6 +1832,9 @@
       <width>70</width>
       <height>30</height>
      </rect>
+    </property>
+    <property name="text">
+     <string>21</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -1833,6 +1872,9 @@
       <height>30</height>
      </rect>
     </property>
+    <property name="text">
+     <string>1</string>
+    </property>
    </widget>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
@@ -1860,6 +1902,12 @@
      <height>0</height>
     </size>
    </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
@@ -1867,10 +1915,12 @@
     <bool>false</bool>
    </attribute>
    <addaction name="separator"/>
+   <addaction name="actionExit"/>
    <addaction name="actionUartConfig"/>
    <addaction name="actionUartConnect"/>
+   <addaction name="actionUartConfig_2"/>
+   <addaction name="actionUartDCConnect"/>
    <addaction name="actionQuickTest"/>
-   <addaction name="actionExit"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionExit">
@@ -1914,15 +1964,45 @@
    </property>
   </action>
   <action name="actionQuickTest">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="icons/icons.qrc">
-     <normaloff>:/new/prefix1/media-seek-forward.png</normaloff>:/new/prefix1/media-seek-forward.png</iconset>
+     <normaloff>:/new/prefix1/media-record.svg</normaloff>:/new/prefix1/media-record.svg</iconset>
    </property>
    <property name="text">
     <string>quickTest</string>
    </property>
    <property name="toolTip">
     <string>Send a test char to serial port</string>
+   </property>
+  </action>
+  <action name="actionUartConfig_2">
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/new/prefix1/wmtweaks.svg</normaloff>:/new/prefix1/wmtweaks.svg</iconset>
+   </property>
+   <property name="text">
+    <string>UartDCConfig</string>
+   </property>
+   <property name="toolTip">
+    <string>Config UART port for DC Power</string>
+   </property>
+  </action>
+  <action name="actionUartDCConnect">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="icons/icons.qrc">
+     <normaloff>:/new/prefix1/gtk-disconnect.png</normaloff>:/new/prefix1/gtk-disconnect.png</iconset>
+   </property>
+   <property name="text">
+    <string>UartDCConnect</string>
+   </property>
+   <property name="toolTip">
+    <string>Connect UART for DC power control</string>
    </property>
   </action>
  </widget>

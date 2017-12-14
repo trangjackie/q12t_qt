@@ -73,6 +73,12 @@ SettingsDialog::~SettingsDialog()
     delete ui;
 }
 
+void SettingsDialog::setdefault(int port, int baud)
+{
+    ui->serialPortInfoListBox->setCurrentIndex(port);
+    ui->baudRateBox->setCurrentIndex(baud);
+}
+
 SettingsDialog::Settings SettingsDialog::settings() const
 {
     return currentSettings;
@@ -172,7 +178,7 @@ void SettingsDialog::fillPortsInfo()
     }
 
     ui->serialPortInfoListBox->addItem(tr("Custom"));
-    ui->serialPortInfoListBox->setCurrentIndex(1);
+    ui->serialPortInfoListBox->setCurrentIndex(2);
 }
 
 void SettingsDialog::updateSettings()

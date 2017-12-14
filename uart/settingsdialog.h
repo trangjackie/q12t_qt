@@ -74,6 +74,7 @@ public:
     ~SettingsDialog();
 
     Settings settings() const;
+    void setdefault(int port, int baud);
 
 private slots:
     void showPortInfo(int idx);
